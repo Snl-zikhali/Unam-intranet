@@ -1,0 +1,68 @@
+<?php $activePage = 'technology'; ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Technology – UNAM Intranet</title>
+  <?php include 'includes/head.php'; ?>
+</head>
+<body>
+
+<?php include 'includes/sidebar.php'; ?>
+
+<main>
+  <div class="page-header">
+    <div class="breadcrumb">Home &rsaquo; <span>Technology</span></div>
+    <h1 class="page-title">ICT <em>Services</em></h1>
+  </div>
+
+  <div class="card">
+    <div class="sec-label"><div class="bar"></div><h2>ICT Self-Service &amp; Contacts</h2></div>
+    <div class="dlist">
+
+      <div class="drow" style="cursor:pointer;">
+        <div class="drow-l">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          Log a Support Ticket
+        </div>
+        <span style="font-size:12px;color:var(--red);font-weight:600;">Helpdesk Portal &rarr;</span>
+      </div>
+
+      <div class="drow">
+        <div class="drow-l">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.58 3.38 2 2 0 0 1 3.55 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.54a16 16 0 0 0 6 6l.86-.86a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.45 16z"/></svg>
+          ICT Helpdesk – Direct Line
+        </div>
+        <span style="font-size:12px;color:var(--red-dark);font-weight:600;">206 3041</span>
+      </div>
+
+      <div class="drow">
+        <div class="drow-l">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          ICT Support Email
+        </div>
+        <span style="font-size:12px;color:var(--text-muted);">ict.support@unam.edu.na</span>
+      </div>
+
+      <div class="drow" style="cursor:pointer;">
+        <div class="drow-l">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 2H3v16h5l3 3 3-3h5V2z"/></svg>
+          Staff Microsoft 365 Portal
+        </div>
+        <span style="font-size:12px;color:var(--red);font-weight:600;">Login &rarr;</span>
+      </div>
+
+      <div class="drow">
+        <div class="drow-l">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+          UNAM WiFi – Staff Network
+        </div>
+        <span style="font-size:12px;color:var(--text-muted);">SSID: UNAM-STAFF</span>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<?php include 'includes/scripts.php'; ?>
+</body>
+</html>

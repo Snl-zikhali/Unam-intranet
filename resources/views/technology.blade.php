@@ -143,7 +143,7 @@ window.onclick = function(event) {
       <div class="drow">
         <div class="drow-l">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.58 3.38 2 2 0 0 1 3.55 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.54a16 16 0 0 0 6 6l.86-.86a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.45 16z"/></svg>
-           – Direct Line
+           Direct Line
         </div>
         <span style="font-size:12px;color:var(--red-dark);font-weight:600;">206 3041</span>
       </div>
@@ -186,14 +186,3 @@ window.onclick = function(event) {
 
 
 
-.input-group {
-    margin-bottom: 10px;
-}
-
-select {
-    width: 100%;
-    padding: 12px;
-    border: 1pxsolid #ccc;
-    border-radius: 4px;
-    font-size: 14px;
-}

@@ -21,63 +21,122 @@
     <div class="sec-label"><div class="bar"></div><h2>ICT Self-Service &amp; Contacts</h2></div>
     <div class="dlist">
       <!-- i added a modal in order for the form to pop-up on the same page when i click the link-->
-      <div class="drow" id= "openModal" style="cursor:pointer;">
-        <div class="drow-l">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-          ITS Access
-        </div>
-        <span style="font-size:12px;color:var(--red);font-weight:600;">Helpdesk Portal &rarr;</span>
-      </div>
-    <div id="modal" class="modal"> 
+      <div class="drow" id="openModal" style="cursor:pointer;">
+  <div class="drow-l">
+    ITS Access
+  </div>
+  <span style="font-size:12px;color:red;font-weight:600;">
+    Get Access →
+  </span>
+</div>
 
-     <div class="modal-content">
-      <span id="closeModal">&times;</span>
+<!-- MODAL -->
+<div id="modal" style="
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(78, 78, 78, 0.6);
+    justify-content:center;
+    align-items:center;
+">
 
+  <div style="
+      background:white;
+      padding:20px;
+      width:400px;
+      max-height:90vh;
+      overflow-y:auto;
+      border-radius:8px;
+      position:relative;
+  ">
 
-         
-       <div class="input-group1">
-        <select id="access">
-          <option value="">Reason for access</option>
-          <option value="email Access">New Job Role</option>
-          <option value="system">Additional Job Duties</option>
-          <option value="network">Change Department</option>
-          <option value="Job function">Change In Job Function</option>
-          <option value="other">Other</option>
-          <option value="remove access">Remove Access</option>    
-        </select>
-      </div><br>
+    <!-- Close Button -->
+    <span id="closeModal" style="
+        position:absolute;
+        top:10px;
+        right:15px;
+        cursor:pointer;
+        font-size:20px;
+    ">&times;</span>
 
-      <form>
-        <input type="text" placeholder="Reason for access..."><br><br>
-        <input type="text" placeholder="Other reason for access..."><br><br>
-        <input type="text" placeholder="Personnel Nr..."><br><br>
-        <input type="text" placeholder="surname..."><br><br>
-        <input type="text" placeholder="Full Names..."><br><br>
-        <input type="text" placeholder="Your email..."><br><br>
-        <input type="text" placeholder="Your Job Title"><br><br>
-        <input type="text" placeholder="Faculty"><br><br>
-        <input type="text" placeholder="Module Head"><br><br>
-        <input type="text" placeholder="List Menu Name, Menu option and Access Level e.g FGLO-6- Update/View"><br><br>
-        
-        <label for="access">Type of Access</label><br><br>
-       <div class="input-group">
-        <select id="access">
-          <option value="">-- Type Of aAccess--</option>
-          <option value="email Access">Email Access</option>
-          <option value="system">System</option>
-          <option value="network">Network Access</option>
-        </select>
-      </div><br>
+    <h3>Request Access</h3>
 
-        
+    <form method="POST" action="#">
+      @csrf
 
-      
+      <!-- Reasons -->
+      <select name="reason" style="width:100%; padding:10px; margin-bottom:10px;">
+        <option value="">Reason for access</option>
+        <option>New Job Role</option>
+        <option>Additional Job Duties</option>
+        <option>Change Department</option>
+        <option>Change In Job Function</option>
+        <option>Other</option>
+        <option>Remove Access</option>
+      </select>
 
-     
-    
-    </div>
-    </div>
-    
+      <input type="text" name="reason_text" placeholder="Reason..." style="width:100%; padding:10px; margin-bottom:10px;">
+      <input type="text" name="other_reason" placeholder="Other reason..." style="width:100%; padding:10px; margin-bottom:10px;">
+      <input type="text" name="personnel" placeholder="Personnel Nr..." style="width:100%; padding:10px; margin-bottom:10px;">
+      <input type="text" name="surname" placeholder="Surname..." style="width:100%; padding:10px; margin-bottom:10px;">
+      <input type="text" name="fullname" placeholder="Full Names..." style="width:100%; padding:10px; margin-bottom:10px;">
+      <input type="email" name="email" placeholder="Your email..." style="width:100%; padding:10px; margin-bottom:10px;">
+      <input type="text" name="job" placeholder="Job Title..." style="width:100%; padding:10px; margin-bottom:10px;">
+      <input type="text" name="faculty" placeholder="Faculty..." style="width:100%; padding:10px; margin-bottom:10px;">
+      <input type="text" name="module_head" placeholder="Module Head..." style="width:100%; padding:10px; margin-bottom:10px;">
+      <input type="text" name="access_details" placeholder="Access Details..." style="width:100%; padding:10px; margin-bottom:10px;">
+
+      <label>Type of Access</label><br><br>
+
+      <select name="type_access" style="width:100%; padding:10px; margin-bottom:10px;">
+        <option value="">-- Type Of Access --</option>
+        <option>Email Access</option>
+        <option>System</option>
+        <option>Network Access</option>
+      </select>
+
+      <button type="submit" style="
+          width:100%;
+          padding:10px;
+          background:black;
+          color:white;
+          border:none;
+          cursor:pointer;
+      ">
+        Submit
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+<!-- Modal for the form -->
+<script>
+const modal = document.getElementById("modal");
+const openBtn = document.getElementById("openModal");
+const closeBtn = document.getElementById("closeModal");
+
+// Open modal
+openBtn.onclick = function() {
+    modal.style.display = "flex";
+}
+
+// Close modal
+closeBtn.onclick = function() {
+    modal.style.display = "none";
+}
+
+// Close when clicking outside
+window.onclick = function(event) {
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
      
     
 
@@ -120,3 +179,21 @@
 @include('includes.scripts')
 </body>
 </html>
+
+
+
+
+
+
+
+.input-group {
+    margin-bottom: 10px;
+}
+
+select {
+    width: 100%;
+    padding: 12px;
+    border: 1pxsolid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}

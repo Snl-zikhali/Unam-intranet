@@ -1,13 +1,13 @@
-<?php $activePage = 'forms'; ?>
+@php $activePage = 'forms'; @endphp
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <title>Forms &amp; Templates – UNAM Intranet</title>
-  <?php include 'includes/head.php'; ?>
+ @include('includes.head')
 </head>
 <body>
 
-<?php include 'includes/sidebar.php'; ?>
+@include('includes.sidebar')
 
 <main>
   <div class="page-header">
@@ -90,7 +90,7 @@
 
   </div><!-- /.fgrid -->
 </main>
-
-<?php include 'includes/scripts.php'; ?>
+''
+@include('includes.scripts')
 </body>
 </html>

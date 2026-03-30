@@ -1,13 +1,13 @@
-<?php $activePage = 'address-book'; ?>
+@php $activePage = 'address-book'; @endphp
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <title>Address Book – UNAM Intranet</title>
-  <?php include 'includes/head.php'; ?>
+@include('includes.head')
 </head>
 <body>
 
-<?php include 'includes/sidebar.php'; ?>
+@include('includes.sidebar')
 
 <main>
   <div class="page-header">
@@ -72,7 +72,7 @@
   </div>
 </main>
 
-<?php include 'includes/scripts.php'; ?>
+@include('includes.scripts')
 <script>
 function doSearch() {
   const fn   = document.getElementById('sfn').value.trim();

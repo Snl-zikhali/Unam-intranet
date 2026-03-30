@@ -1,13 +1,13 @@
-<?php $activePage = 'links'; ?>
+@php $activePage = 'links'; @endphp
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <title>Links – UNAM Intranet</title>
-  <?php include 'includes/head.php'; ?>
+  @include('includes.head')
 </head>
 <body>
 
-<?php include 'includes/sidebar.php'; ?>
+@include('includes.sidebar')
 
 <main>
   <div class="page-header">
@@ -43,6 +43,6 @@
   </div>
 </main>
 
-<?php include 'includes/scripts.php'; ?>
+@include('includes.scripts')
 </body>
 </html>

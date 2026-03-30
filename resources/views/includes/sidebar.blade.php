@@ -1,27 +1,21 @@
 <?php
 // $activePage should be set in each page file before including this
-// e.g. $activePage = 'address-book';
+// e.g. $activePage = 'address-book';?>
+@php
 function navLink($page, $label, $icon, $activePage) {
     $class = ($activePage === $page) ? ' class="active"' : '';
-    $file  = $page . '.php';
-    echo "<a href=\"{$file}\"{$class}>{$icon}{$label}</a>";
+    $url   = url($page);
+    echo "<a href=\"{$url}\"{$class}>{$icon}{$label}</a>";
 }
+@endphp
 ?>
 <aside>
   <div class="logo-area">
-    <svg class="logo-svg" viewBox="0 0 80 80" fill="none">
-      <path d="M16 62 L40 14 L64 62 Z" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
-      <path d="M40 14 L40 62" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
-      <circle cx="55" cy="27" r="9" fill="#F5A623" opacity="0.92"/>
-      <line x1="55" y1="14" x2="55" y2="11" stroke="#F5A623" stroke-width="2" stroke-linecap="round"/>
-      <line x1="64" y1="18" x2="66.5" y2="15.5" stroke="#F5A623" stroke-width="2" stroke-linecap="round"/>
-      <line x1="68" y1="27" x2="71" y2="27" stroke="#F5A623" stroke-width="2" stroke-linecap="round"/>
-    </svg>
-    <div class="logo-wordmark">UNAM</div>
-    <div class="logo-sub">University of Namibia</div>
+ <img src="{{ asset('images/top_logo.jpg') }}" alt="UNAM Logo" class="logo-img">
+</div>  
   </div>
   <nav>
-    <?php
+    @php
     $icon_address_book = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M4 6h16M4 10h16M4 14h8"/></svg>';
     $icon_brand        = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>';
     $icon_vacancies    = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 3H8l-2 4h12z"/></svg>';
@@ -43,7 +37,7 @@ function navLink($page, $label, $icon, $activePage) {
     navLink('calendar',     'Calendar',        $icon_calendar,   $activePage);
     navLink('links',        'Links',           $icon_links,      $activePage);
     navLink('technology',   'Technology',      $icon_technology, $activePage);
-    ?>
+    @endphp
   </nav>
   <div class="sidebar-footer"><div class="tagline">Open Your Mind</div></div>
 </aside>

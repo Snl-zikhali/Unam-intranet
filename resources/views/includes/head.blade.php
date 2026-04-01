@@ -5,8 +5,8 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
   --red: #ee3124; --red-dark: #EE3124; --red-light: rgba(200,16,46,0.07);
-  --gold: #F5A623; --white: #ffffff; --off-white: #f9f7f5;
-  --text: #707070; --text-muted: #666; --border: #e5e1dc;
+  --gold: #F5A623; --white: #f3f1f1; --off-white: #f0eded;
+  --text: #464343; --text-muted: #5a5a5a; --border: #e5e1dc;
   --sidebar-w: 210px; --ease: cubic-bezier(.4,0,.2,1);
 }
 body { font-family: 'DM Sans', sans-serif; background: var(--off-white); color: var(--text); display: flex; min-height: 100vh; }
@@ -32,7 +32,7 @@ main { margin-left: var(--sidebar-w); flex:1; padding: 46px 56px; min-height:100
 .page-header { margin-bottom:36px; padding-bottom:24px; border-bottom:2px solid var(--border); }
 .breadcrumb { font-size:11px; color:var(--text-muted); letter-spacing:1px; text-transform:uppercase; margin-bottom:8px; }
 .breadcrumb span { color:var(--red); }
-.page-title { font-family:'Playfair Display',sans-serif; font-size:34px; font-weight:700; letter-spacing:-0.5px; }
+.page-title { font-family:'DM Sans',sans-serif; font-size:34px; font-weight:700; letter-spacing:-0.5px; }
 .page-title em { font-style:normal; color:var(--red); }
 
 /* CARDS */
@@ -40,7 +40,7 @@ main { margin-left: var(--sidebar-w); flex:1; padding: 46px 56px; min-height:100
 .card:hover { box-shadow:0 4px 22px rgba(0,0,0,0.07); }
 .sec-label { display:flex; align-items:center; gap:10px; margin-bottom:20px; }
 .sec-label .bar { width:4px; height:20px; background:var(--red); border-radius:2px; }
-.sec-label h2 { font-family:'Playfair Display',serif; font-size:19px; font-weight:600; }
+.sec-label h2 { font-family:'DM Sans',sans-serif; font-size:19px; font-weight:600; }
 
 /* ACCORDION */
 .acc { display:flex; flex-direction:column; gap:10px; }
@@ -92,13 +92,13 @@ main { margin-left: var(--sidebar-w); flex:1; padding: 46px 56px; min-height:100
 /* STAT CARDS */
 .sgrid { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-bottom:14px; }
 .sc { background:var(--off-white); border:1px solid var(--border); border-radius:8px; padding:18px 16px; text-align:center; }
-.snum { font-family:'Playfair Display',serif; font-size:28px; font-weight:700; color:var(--red); line-height:1; }
+.snum { font-family:'DM Sans',sans-serif; font-size:28px; font-weight:700; color:var(--red); line-height:1; }
 .slbl { font-size:11px; color:var(--text-muted); letter-spacing:0.4px; text-transform:uppercase; margin-top:3px; font-weight:500; }
 
 /* CALENDAR */
 .cal-cta { display:inline-flex; align-items:center; gap:8px; background:var(--red); color:#fff; border-radius:8px; padding:11px 22px; font-size:13px; font-weight:600; letter-spacing:0.5px; cursor:pointer; border:none; transition:background 0.18s; margin-bottom:28px; }
 .cal-cta:hover { background:var(--red-dark); }
-.sem-title { font-family:'Playfair Display',serif; font-size:16px; font-weight:600; margin-bottom:14px; display:flex; align-items:center; gap:8px; }
+.sem-title { font-family:'DM Sans',sans-serif; font-size:16px; font-weight:600; margin-bottom:14px; display:flex; align-items:center; gap:8px; }
 .sem-title::after { content:''; flex:1; height:1px; background:var(--border); }
 .cal-entries { display:flex; flex-direction:column; margin-bottom:28px; }
 .cal-row { display:flex; align-items:flex-start; border-bottom:1px solid var(--border); padding:11px 6px; transition:background 0.15s; border-radius:4px; }

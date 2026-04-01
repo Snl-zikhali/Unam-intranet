@@ -1,0 +1,163 @@
+<!-- ITS ACCESS TRIGGER -->
+<div class="drow" id="openModal" style="cursor:pointer;">
+  <div class="drow-l">
+    ITS Access
+  </div>
+  <span style="font-size:12px;color:red;font-weight:600;">
+    Get Access →
+  </span>
+</div>
+
+<!-- POPUP 1: PERSONNEL -->
+<div id="personnelModal" style="
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.6);
+    justify-content:center;
+    align-items:center;
+">
+
+  <div style="background:white; padding:20px; width:300px;">
+    <h3>Enter Personnel Number</h3>
+
+    <input type="text" id="personnelInput"
+      placeholder="Personnel Number"
+      style="width:100%; padding:10px; margin-bottom:10px;">
+
+    <button id="continueBtn" style="width:100%; padding:10px;">
+      Continue
+    </button>
+  </div>
+</div>
+
+<!-- POPUP 2: FORM -->
+<div id="formModal" style="
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.6);
+    justify-content:center;
+    align-items:center;
+">
+
+  <div style="background:white; padding:20px; width:400px;">
+    <h3>ITS Request Form</h3>
+
+    <form>
+      <input type="text" placeholder="Full Name"
+        style="width:100%; padding:10px; margin-bottom:10px;">
+
+      <input type="email" placeholder="Email"
+        style="width:100%; padding:10px; margin-bottom:10px;">
+
+      <button type="submit" style="width:100%; padding:10px;">
+        Submit
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- SCRIPT (MUST BE AT BOTTOM) -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+
+  const openBtn = document.getElementById("openModal");
+  const personnelModal = document.getElementById("personnelModal");
+  const formModal = document.getElementById("formModal");
+  const continueBtn = document.getElementById("continueBtn");
+
+  // Open first modal
+  openBtn.addEventListener("click", function() {
+    personnelModal.style.display = "flex";
+  });
+
+  // Move to second modal
+  continueBtn.addEventListener("click", function() {
+    const value = document.getElementById("personnelInput").value;
+
+    if (value === "") {
+      alert("Please enter personnel number");
+      return;
+    }
+
+    personnelModal.style.display = "none";
+    formModal.style.display = "flex";
+  });
+
+});
+</script>
+
+
+
+
+
+
+<div class="drow" id="openModal" style="cursor:pointer;">
+  <div class="drow-l">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <rect x="2" y="3" width="20" height="14" rx="2"/>
+      <path d="M8 21h8M12 17v4"/>
+    </svg>
+    ITS Access
+  </div>
+  <span style="font-size:12px;color:var(--red);font-weight:600;">
+    Helpdesk Portal →
+  </span>
+</div>
+
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span id="closeModal">&times;</span>
+
+    <form method="POST" action="#">
+      <!-- CSRF for Laravel -->
+      @csrf
+
+      <!-- Reason Dropdown -->
+      <div class="input-group">
+        <select name="reason">
+          <option value="">Reason for access</option>
+          <option>New Job Role</option>
+          <option>Additional Job Duties</option>
+          <option>Change Department</option>
+          <option>Change In Job Function</option>
+          <option>Other</option>
+          <option>Remove Access</option>    
+        </select>
+      </div><br>
+
+      <!-- Inputs -->
+      <input type="text" name="reason_text" placeholder="Reason for access..."><br><br>
+      <input type="text" name="other_reason" placeholder="Other reason..."><br><br>
+      <input type="text" name="personnel" placeholder="Personnel Nr..."><br><br>
+      <input type="text" name="surname" placeholder="Surname..."><br><br>
+      <input type="text" name="fullname" placeholder="Full Names..."><br><br>
+      <input type="email" name="email" placeholder="Your email..."><br><br>
+      <input type="text" name="job" placeholder="Your Job Title"><br><br>
+      <input type="text" name="faculty" placeholder="Faculty"><br><br>
+      <input type="text" name="module_head" placeholder="Module Head"><br><br>
+      <input type="text" name="access_details" placeholder="Menu + Access Level"><br><br>
+
+      <!-- Type of Access -->
+      <label>Type of Access</label><br><br>
+      <div class="input-group">
+        <select name="type_access">
+          <option value="">-- Type Of Access --</option>
+          <option>Email Access</option>
+          <option>System</option>
+          <option>Network Access</option>
+        </select>
+      </div><br>
+
+      <button type="submit">Submit</button>
+    </form>
+
+  </div>
+</div>

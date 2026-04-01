@@ -2,10 +2,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
   <title>Technology – UNAM Intranet</title>
-   <link rel="stylesheet" type="text/css" media="screen" href="css/app.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="css/app.css" />
   @include('includes.head')
+  <style>
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .modal.form-modal {
+      overflow-y: auto;
+      padding: 20px;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      max-width: 600px;
+      width: 100%;
+      margin: auto;
+    }
+
+    .modal-content h3 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 30px;
+      color: #333;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: #333;
+      font-size: 14px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 14px;
+      transition: border-color 0.3s ease;
+    }
+
+    input[type="text"]:hover,
+    input[type="email"]:hover,
+    select:hover {
+      border-color: #E53935;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    select:focus {
+      outline: none;
+      border-color: #E53935;
+      box-shadow: 0 0 0 3px rgba(229, 57, 53, 0.1);
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #E53935;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background-color: #C62828;
+    }
+
+    #personnelModal .modal-content {
+      max-width: 500px;
+    }
+  </style>
 </head>
 <body>
 
@@ -20,130 +114,120 @@
   <div class="card">
     <div class="sec-label"><div class="bar"></div><h2>ICT Self-Service &amp; Contacts</h2></div>
     <div class="dlist">
-      <!-- i added a modal in order for the form to pop-up on the same page when i click the link-->
+
       <div class="drow" id="openModal" style="cursor:pointer;">
-  <div class="drow-l">
-    ITS Access
-  </div>
-  <span style="font-size:12px;color:red;font-weight:600;">
-    Get Access →
-  </span>
-</div>
+        <div class="drow-l">ITS Access</div>
+        <span style="font-size:12px;color:red;font-weight:600;">Get Access →</span>
+      </div>
 
-<!-- MODAL -->
-<div id="modal" style="
-    display:none;
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background:rgba(78, 78, 78, 0.6);
-    justify-content:center;
-    align-items:center;
-">
+      <!-- POPUP 1: PERSONNEL -->
+      <div id="personnelModal" class="modal">
+        <div class="modal-content">
+          <h3>Enter Personnel Number</h3>
+          <div class="form-group">
+            <input type="text" id="personnelInput" placeholder="Personnel Number">
+          </div>
+          <button id="continueBtn">Continue</button>
+        </div>
+      </div>
 
-  <div style="
-      background:white;
-      padding:20px;
-      width:400px;
-      max-height:90vh;
-      overflow-y:auto;
-      border-radius:8px;
-      position:relative;
-  ">
+      <!-- POPUP 2: FORM -->
+      <div id="formModal" class="modal form-modal">
+        <div class="modal-content">
+          <h3>ITS Request Form</h3>
+          <form>
+            <div class="form-group">
+              <label>Reason for Access</label>
+              <select name="reason">
+                <option value="">Select a reason...</option>
+                <option>New Job Role</option>
+                <option>Additional Job Duties</option>
+                <option>Change Department</option>
+                <option>Change In Job Function</option>
+                <option>Other</option>
+                <option>Remove Access</option>
+              </select>
+            </div>
 
-    <!-- Close Button -->
-    <span id="closeModal" style="
-        position:absolute;
-        top:10px;
-        right:15px;
-        cursor:pointer;
-        font-size:20px;
-    ">&times;</span>
+            <div class="form-group">
+              <label>Other reason</label>
+              <input type="text" placeholder="Please specify">
+            </div>
 
-    <h3>Request Access</h3>
+            <div class="form-group">
+              <label>Surname</label>
+              <input type="text" placeholder="Surname">
+            </div>
 
-    <form method="POST" action="#">
-      @csrf
+            <div class="form-group">
+              <label>Second Surname</label>
+              <input type="text" placeholder="Second surname">
+            </div>
 
-      <!-- Reasons -->
-      <select name="reason" style="width:100%; padding:10px; margin-bottom:10px;">
-        <option value="">Reason for access</option>
-        <option>New Job Role</option>
-        <option>Additional Job Duties</option>
-        <option>Change Department</option>
-        <option>Change In Job Function</option>
-        <option>Other</option>
-        <option>Remove Access</option>
-      </select>
+            <div class="form-group">
+              <label>Full Names</label>
+              <input type="text" placeholder="Full Names">
+            </div>
 
-      <input type="text" name="reason_text" placeholder="Reason..." style="width:100%; padding:10px; margin-bottom:10px;">
-      <input type="text" name="other_reason" placeholder="Other reason..." style="width:100%; padding:10px; margin-bottom:10px;">
-      <input type="text" name="personnel" placeholder="Personnel Nr..." style="width:100%; padding:10px; margin-bottom:10px;">
-      <input type="text" name="surname" placeholder="Surname..." style="width:100%; padding:10px; margin-bottom:10px;">
-      <input type="text" name="fullname" placeholder="Full Names..." style="width:100%; padding:10px; margin-bottom:10px;">
-      <input type="email" name="email" placeholder="Your email..." style="width:100%; padding:10px; margin-bottom:10px;">
-      <input type="text" name="job" placeholder="Job Title..." style="width:100%; padding:10px; margin-bottom:10px;">
-      <input type="text" name="faculty" placeholder="Faculty..." style="width:100%; padding:10px; margin-bottom:10px;">
-      <input type="text" name="module_head" placeholder="Module Head..." style="width:100%; padding:10px; margin-bottom:10px;">
-      <input type="text" name="access_details" placeholder="Access Details..." style="width:100%; padding:10px; margin-bottom:10px;">
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" placeholder="Email">
+            </div>
 
-      <label>Type of Access</label><br><br>
+            <div class="form-group">
+              <label>Your Job Title</label>
+              <input type="text" placeholder="Your Job Title">
+            </div>
 
-      <select name="type_access" style="width:100%; padding:10px; margin-bottom:10px;">
-        <option value="">-- Type Of Access --</option>
-        <option>Email Access</option>
-        <option>System</option>
-        <option>Network Access</option>
-      </select>
+            <div class="form-group">
+              <label>Faculty</label>
+              <input type="text" placeholder="Faculty">
+            </div>
 
-      <button type="submit" style="
-          width:100%;
-          padding:10px;
-          background:black;
-          color:white;
-          border:none;
-          cursor:pointer;
-      ">
-        Submit
-      </button>
+            <div class="form-group">
+              <label>Department</label>
+              <input type="text" placeholder="Department">
+            </div>
 
-    </form>
 
-  </div>
-</div>
+               <label>Module Head</label>
+              <select name="reason">
+                <option value="">Select a reason...</option>
+                <option>New Job Role</option>
+                <option>Additional Job Duties</option>
+                <option>Change Department</option>
+                <option>Change In Job Function</option>
+                <option>Other</option>
+                <option>Remove Access</option>
+              </select>
+            </div>
 
-<!-- Modal for the form -->
-<script>
-const modal = document.getElementById("modal");
-const openBtn = document.getElementById("openModal");
-const closeBtn = document.getElementById("closeModal");
+            <div class="form-group">
+              <label>List Menu Name,</label>
+              <input type="text" placeholder="List Menu Name,Menu otions and access">
+            </div>
 
-// Open modal
-openBtn.onclick = function() {
-    modal.style.display = "flex";
-}
+            
 
-// Close modal
-closeBtn.onclick = function() {
-    modal.style.display = "none";
-}
+            <div class="form-group">
+              <label>Type of Access</label>
+              <select name="access-type">
+                <option value="">Select type of access...</option>
+                <option>Temporary Access</option>
+                <option>Permanent Access</option>
+                
+              </select>
+            </div>
 
-// Close when clicking outside
-window.onclick = function(event) {
-    if (event.target === modal) {
-        modal.style.display = "none";
-    }
-}
-</script>
-     
-    
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
 
       <div class="drow">
         <div class="drow-l">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.58 3.38 2 2 0 0 1 3.55 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.54a16 16 0 0 0 6 6l.86-.86a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.45 16z"/></svg>
-           Direct Line
+          Direct Line
         </div>
         <span style="font-size:12px;color:var(--red-dark);font-weight:600;">206 3041</span>
       </div>
@@ -177,12 +261,28 @@ window.onclick = function(event) {
 </main>
 
 @include('includes.scripts')
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const openBtn = document.getElementById("openModal");
+  const personnelModal = document.getElementById("personnelModal");
+  const formModal = document.getElementById("formModal");
+  const continueBtn = document.getElementById("continueBtn");
+
+  openBtn.addEventListener("click", function() {
+    personnelModal.style.display = "flex";
+  });
+
+  continueBtn.addEventListener("click", function() {
+    if (document.getElementById("personnelInput").value === "") {
+      alert("Please enter personnel number");
+      return;
+    }
+    personnelModal.style.display = "none";
+    formModal.style.display = "flex";
+  });
+});
+</script>
+
 </body>
 </html>
-
-
-
-
-
-
-

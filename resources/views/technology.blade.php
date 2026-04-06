@@ -156,43 +156,44 @@
 
             <div class="form-group">
               <label>Surname</label>
-              <input type="text" placeholder="Surname">
+              <input type="text" id="surname" placeholder="Surname">
             </div>
 
             <div class="form-group">
               <label>Second Surname</label>
-              <input type="text" placeholder="Second surname">
+              <input type="text" id="Surname2" placeholder="Second surname">
             </div>
 
             <div class="form-group">
               <label>Full Names</label>
-              <input type="text" placeholder="Full Names">
+              <input type="text" id="fullname" placeholder="Full Names">
             </div>
 
             <div class="form-group">
               <label>Email</label>
-              <input type="email" placeholder="Email">
+              <input type="email" id="email" placeholder="Email">
             </div>
 
             <div class="form-group">
               <label>Your Job Title</label>
-              <input type="text" placeholder="Your Job Title">
+              <input type="text" id="job_title" placeholder="Your Job Title">
             </div>
 
             <div class="form-group">
               <label>Faculty</label>
-              <input type="text" placeholder="Faculty">
+              <input type="text" id="faculty" placeholder="Faculty">
             </div>
 
             <div class="form-group">
               <label>Department</label>
-              <input type="text" placeholder="Department">
+              <input type="text" id="department" placeholder="Department">
             </div>
-
-
-               <label>Module Head</label>
-              <select name="reason">
-                <option value="">Select a reason...</option>
+             
+            
+            <div class="form-group">
+              <label>Module head</label>
+              <select name="access-type">
+                <option value="">Select type of access...</option>
                 <option>New Job Role</option>
                 <option>Additional Job Duties</option>
                 <option>Change Department</option>
@@ -201,21 +202,23 @@
                 <option>Remove Access</option>
               </select>
             </div>
+            
 
             <div class="form-group">
-              <label>List Menu Name,</label>
-              <input type="text" placeholder="List Menu Name,Menu otions and access">
+              <label>List Menu Options</label>
+              <input type="text" placeholder="List Menu Options">
             </div>
-
-            
 
             <div class="form-group">
               <label>Type of Access</label>
               <select name="access-type">
                 <option value="">Select type of access...</option>
-                <option>Temporary Access</option>
-                <option>Permanent Access</option>
-                
+                <option>New Job Role</option>
+                <option>Additional Job Duties</option>
+                <option>Change Department</option>
+                <option>Change In Job Function</option>
+                <option>Other</option>
+                <option>Remove Access</option>
               </select>
             </div>
 
@@ -273,14 +276,44 @@ document.addEventListener("DOMContentLoaded", function() {
     personnelModal.style.display = "flex";
   });
 
-  continueBtn.addEventListener("click", function() {
-    if (document.getElementById("personnelInput").value === "") {
+    continueBtn.addEventListener("click", async function() {
+
+    const personnel = document.getElementById("personnelInput").value;
+
+    if (personnel === "") {
       alert("Please enter personnel number");
       return;
     }
-    personnelModal.style.display = "none";
-    formModal.style.display = "flex";
+
+    try {
+      const response = await fetch(`/api/employee/${personnel}`);
+      
+      if (!response.ok) {
+        alert("User not found");
+        return;
+      }
+
+      const data = await response.json();
+
+      //  AUTO-FILL FORM
+      document.getElementById("surname").value = data.surname || "";
+      document.getElementById("fullname").value = data.fullname || "";
+      document.getElementById("email").value = data.email || "";
+      document.getElementById("job").value = data.job_title || "";
+      document.getElementById("faculty").value = data.faculty || "";
+      document.getElementById("department").value = data.department || "";
+      
+      // SWITCH MODALS
+      personnelModal.style.display = "none";
+      formModal.style.display = "flex";
+
+    } catch (error) {
+      console.error(error);
+      alert("Something went wrong");
+    }
+
   });
+
 });
 </script>
 

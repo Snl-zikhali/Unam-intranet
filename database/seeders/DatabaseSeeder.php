@@ -24,7 +24,7 @@ class EmployeeSeeder extends Seeder
 {
     public function run(): void
     {
-        // ---------------------------------------------------
+        // -----//----------------------------------------------
         // Employee::truncate() deletes ALL rows from the table
         // before seeding. This prevents duplicate entries if
         // you run the seeder more than once.
@@ -37,15 +37,20 @@ class EmployeeSeeder extends Seeder
         // existing HR system later.
         // ---------------------------------------------------
         $employees = [
-            [
-                'full_name'  => 'Professor Kenneth Matengu',
-                'position'   => 'Vice-Chancellor',
+            [    
+
+                'personnel_number' => '01',
+                'surname' => 'Matengu',
+                'full_name'  => 'Professor Kenneth',
                 'email'      => 'vc@unam.na',
-                'telephone'  => '+264 61 206 3111',
-                'department' => 'Office of the Vice-Chancellor',
+                'faculty' => 'Computer Science',
+                'job_title'  => '+264 61 206 3111',
+                'department' => 'IT Business Analyst',
                 'is_active'  => true,
             ],
             [
+                
+                'personnel_number' => '02',
                 'full_name'  => 'Dr. Frednard Gideon',
                 'position'   => 'Deputy Vice-Chancellor: Academic Affairs',
                 'email'      => 'dvcaa@unam.na',
@@ -53,7 +58,8 @@ class EmployeeSeeder extends Seeder
                 'department' => 'Office of the Vice-Chancellor',
                 'is_active'  => true,
             ],
-            [
+            [   
+                 'personnel_number' => '03',
                 'full_name'  => 'Ms. Selma Shikongo',
                 'position'   => 'Director: Human Resources',
                 'email'      => 's.shikongo@unam.na',
@@ -61,62 +67,63 @@ class EmployeeSeeder extends Seeder
                 'department' => 'Human Resources',
                 'is_active'  => true,
             ],
-            [
-                'full_name'  => 'Mr. Thomas Hamunyela',
-                'position'   => 'HR Officer',
+            [   
+                'personnel_number' => '05',
+                'surname' => 'Hamunyela',
+                'full_name'  => 'Mr. Thomas',
+                'job_title'   => 'HR Officer',
                 'email'      => 't.hamunyela@unam.na',
                 'telephone'  => '+264 61 206 3205',
                 'department' => 'Human Resources',
                 'is_active'  => true,
             ],
-            [
-                'full_name'  => 'Ms. Anna Nghifikepunye',
-                'position'   => 'Director: ICT Services',
+            [    
+                'personnel_number' => '06',
+                'surname' => 'Nghifikepunye',
+                'full_name'  => 'Ms. Anna',
+                'job_title'   => 'Director: ICT Services',
                 'email'      => 'a.nghifikepunye@unam.na',
-                'telephone'  => '+264 61 206 3300',
+                'faculty'  => 'Comuter Science',
                 'department' => 'ICT Services',
                 'is_active'  => true,
             ],
-            [
-                'full_name'  => 'Mr. David Nankela',
-                'position'   => 'Systems Administrator',
+            [   'personnnel_number' => '09',
+                'surname' => 'Nankela',
+                'full_name'  => 'Mr. David',
+                'job_title'   => 'Systems Administrator',
                 'email'      => 'd.nankela@unam.na',
-                'telephone'  => '+264 61 206 3310',
+                'faculty'  => 'Engineering',
                 'department' => 'ICT Services',
                 'is_active'  => true,
             ],
-            [
-                'full_name'  => 'Dr. Hilma Amwele',
-                'position'   => 'Senior Lecturer',
+            [   'personnel_number' => '10',
+                'surname' => 'Amwele',
+                'full_name'  => 'Dr. Hilma',
+                'job_title'   => 'Senior Lecturer',
                 'email'      => 'h.amwele@unam.na',
-                'telephone'  => '+264 61 206 4100',
+                'faculty'  => 'Health Science',
                 'department' => 'Faculty of Health Sciences & Veterinary Medicine',
                 'is_active'  => true,
             ],
-            [
-                'full_name'  => 'Prof. Reinhold Kamati',
-                'position'   => 'Dean of Faculty',
+            [   'personnel_number' => '08',
+                'surname' => 'Kamati',
+                'full_name'  => 'Prof. Reinhold',
+                'Job_title'   => 'Dean of Faculty',
                 'email'      => 'r.kamati@unam.na',
-                'telephone'  => '+264 61 206 4000',
+                'faculty'  => 'Science And Technology',
                 'department' => 'Faculty of Science, Technology & Engineering',
                 'is_active'  => true,
             ],
-            [
-                'full_name'  => 'Ms. Grace Nakale',
-                'position'   => 'Finance Officer',
+            [   'personnel_number' => '07',
+                'surname' => 'Nakale',
+                'full_name'  => 'Ms. Grace',
+                'job_title'   => 'Finance Officer',
                 'email'      => 'g.nakale@unam.na',
-                'telephone'  => '+264 61 206 3400',
+                'faculty'  => 'Finance',
                 'department' => 'Finance & Administration',
                 'is_active'  => true,
             ],
-            [
-                'full_name'  => 'Mr. Joel Haindongo',
-                'position'   => 'Senior Librarian',
-                'email'      => 'j.haindongo@unam.na',
-                'telephone'  => '+264 61 206 3500',
-                'department' => 'Library & Information Services',
-                'is_active'  => true,
-            ],
+         
         ];
 
         // ---------------------------------------------------

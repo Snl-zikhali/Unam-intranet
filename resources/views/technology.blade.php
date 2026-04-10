@@ -115,117 +115,23 @@
     <div class="sec-label"><div class="bar"></div><h2>ICT Self-Service &amp; Contacts</h2></div>
     <div class="dlist">
 
-      <div class="drow" id="openModal" style="cursor:pointer;">
-        <div class="drow-l">ITS Access</div>
-        <span style="font-size:12px;color:red;font-weight:600;">Get Access →</span>
-      </div>
-
-      <!-- POPUP 1: PERSONNEL -->
-      <div id="personnelModal" class="modal">
-        <div class="modal-content">
-          <h3>Enter Personnel Number</h3>
-          <div class="form-group">
-            <input type="text" id="personnelInput" placeholder="Personnel Number">
-          </div>
-          <button id="continueBtn">Continue</button>
+     
+      <div class="drow">
+        <div class="drow-l">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+          ITS Access
         </div>
+        <span style="font-size:12px;color:var(--red-dark);">
+        <a href="/its-access" target="_blank" class="target-danger">Get Access</a></span>
       </div>
+     
+     
+     
 
-      <!-- POPUP 2: FORM -->
-      <div id="formModal" class="modal form-modal">
-        <div class="modal-content">
-          <h3>ITS Request Form</h3>
-          <form>
-            <div class="form-group">
-              <label>Reason for Access</label>
-              <select name="reason">
-                <option value="">Select a reason...</option>
-                <option>New Job Role</option>
-                <option>Additional Job Duties</option>
-                <option>Change Department</option>
-                <option>Change In Job Function</option>
-                <option>Other</option>
-                <option>Remove Access</option>
-              </select>
-            </div>
 
-            <div class="form-group">
-              <label>Other reason</label>
-              <input type="text" placeholder="Please specify">
-            </div>
+ 
 
-            <div class="form-group">
-              <label>Surname</label>
-              <input type="text" id="surname" placeholder="Surname">
-            </div>
 
-            <div class="form-group">
-              <label>Second Surname</label>
-              <input type="text" id="Surname2" placeholder="Second surname">
-            </div>
-
-            <div class="form-group">
-              <label>Full Names</label>
-              <input type="text" id="fullname" placeholder="Full Names">
-            </div>
-
-            <div class="form-group">
-              <label>Email</label>
-              <input type="email" id="email" placeholder="Email">
-            </div>
-
-            <div class="form-group">
-              <label>Your Job Title</label>
-              <input type="text" id="job_title" placeholder="Your Job Title">
-            </div>
-
-            <div class="form-group">
-              <label>Faculty</label>
-              <input type="text" id="faculty" placeholder="Faculty">
-            </div>
-
-            <div class="form-group">
-              <label>Department</label>
-              <input type="text" id="department" placeholder="Department">
-            </div>
-             
-            
-            <div class="form-group">
-              <label>Module head</label>
-              <select name="access-type">
-                <option value="">Select type of access...</option>
-                <option>New Job Role</option>
-                <option>Additional Job Duties</option>
-                <option>Change Department</option>
-                <option>Change In Job Function</option>
-                <option>Other</option>
-                <option>Remove Access</option>
-              </select>
-            </div>
-            
-
-            <div class="form-group">
-              <label>List Menu Options</label>
-              <input type="text" placeholder="List Menu Options">
-            </div>
-
-            <div class="form-group">
-              <label>Type of Access</label>
-              <select name="access-type">
-                <option value="">Select type of access...</option>
-                <option>New Job Role</option>
-                <option>Additional Job Duties</option>
-                <option>Change Department</option>
-                <option>Change In Job Function</option>
-                <option>Other</option>
-                <option>Remove Access</option>
-              </select>
-            </div>
-
-            <button type="submit">Submit</button>
-          </form>
-        </div>
-      </div>
 
       <div class="drow">
         <div class="drow-l">
@@ -265,57 +171,8 @@
 
 @include('includes.scripts')
 
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  const openBtn = document.getElementById("openModal");
-  const personnelModal = document.getElementById("personnelModal");
-  const formModal = document.getElementById("formModal");
-  const continueBtn = document.getElementById("continueBtn");
+<!-- SCRIPT (MUST BE AT BOTTOM) -->
 
-  openBtn.addEventListener("click", function() {
-    personnelModal.style.display = "flex";
-  });
-
-    continueBtn.addEventListener("click", async function() {
-
-    const personnel = document.getElementById("personnelInput").value;
-
-    if (personnel === "") {
-      alert("Please enter personnel number");
-      return;
-    }
-
-    try {
-      const response = await fetch(`/api/employee/${personnel}`);
-      
-      if (!response.ok) {
-        alert("User not found");
-        return;
-      }
-
-      const data = await response.json();
-
-      //  AUTO-FILL FORM
-      document.getElementById("surname").value = data.surname || "";
-      document.getElementById("fullname").value = data.fullname || "";
-      document.getElementById("email").value = data.email || "";
-      document.getElementById("job").value = data.job_title || "";
-      document.getElementById("faculty").value = data.faculty || "";
-      document.getElementById("department").value = data.department || "";
-      
-      // SWITCH MODALS
-      personnelModal.style.display = "none";
-      formModal.style.display = "flex";
-
-    } catch (error) {
-      console.error(error);
-      alert("Something went wrong");
-    }
-
-  });
-
-});
-</script>
 
 </body>
 </html>

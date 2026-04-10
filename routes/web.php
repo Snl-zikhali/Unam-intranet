@@ -1,6 +1,8 @@
 <?php
-
+use App\Http\Controllers\EmployeeController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ItsAccessController;
+use App\Http\Controllers\PersonalDetail;
 
 Route::get('/', function () {
     return view('address-book');
@@ -49,3 +51,17 @@ Route::get('/links', function () {
 Route::get('/technology',function() {
     return view('technology');
 });
+
+
+
+
+Route::post('/technology/personnel_no', [ItsAccessController::class, 'store'])->name('its.access.store');
+
+Route::get('/its-access', function (){
+    return view('personnel-no');
+});
+
+
+
+Route::post('/dis-info',[PersonalDetail::class, 'getPersonaldetail'])->name('verify.info');
+

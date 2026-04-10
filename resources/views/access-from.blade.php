@@ -24,12 +24,13 @@
     height: 100vh;
     overflow: hidden;
     margin-left: 210px; /* ← pushes form out from behind the fixed sidebar */
+    padding: 20px;
 }
 
         /* ── Form card fills the open grey area ── */
         .form-card {
             flex: 1;
-            display: flex;
+            display: content;
             flex-direction: column;
             background: #fff;
             overflow-y: auto;
@@ -42,7 +43,7 @@
             font-size: 15px;
             font-weight: 500;
             margin: 10;
-            padding: 16px 24px 6px;
+            padding: 8px 16px 6px;
         }
 
         .form-card > p {
@@ -50,13 +51,13 @@
             color: rgba(255, 255, 255, 0.75);
             font-size: 14px;
             margin: 0;
-            padding: 0 24px 5px;
+            padding: 0 12px 5px;
         }
 
         /* ── Form body ── */
         form {
-            padding: 16px 24px;
-            flex: 1;
+            padding: 24px 60px;
+            flex: 0;
             display: flex;
             flex-direction: column;
         }
@@ -300,7 +301,7 @@
                     <input type="text" id="field3" class="seq-input" placeholder="Update/View" required>
                 </div>
 
-                <div class="spacer"></div>
+            
 
                 <button type="submit" class="red-button">Continue</button>
             </form>

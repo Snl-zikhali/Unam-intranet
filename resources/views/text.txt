@@ -63,3 +63,82 @@
             </form>
         </div>
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <form action="{{ route('its.access.store') }}" method="POST">
+                @csrf
+
+                <div class="section-title">Request details</div>
+                <div class="row2">
+                    <div>
+                        <label for="service_type">Reason for Access</label>
+                        <select name="service_type" id="service_type" class="input-field" required>
+                            <option value="" disabled selected>Reason For Access...</option>
+                            <option value="new_job_role">New Job Role</option>
+                            <option value="additional_job_duties">Additional Job Duties</option>
+                            <option value="change_in_job_function">Network Support</option>
+                            <option value="network_support">Change in Job Function</option>
+                            <option value="other">Other</option>
+                            <option value="remove_access">Remove Access</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="access_type">Type of Access</label>
+                        <select name="access_type" id="access_type" class="input-field" required>
+                            <option value="" disabled selected>--Type of Access--</option>
+                            <option value="temporary-access">Temporary Access</option>
+                            <option value="permanent-access">Permanent Access</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="section-title">Applicant info</div>
+                <div class="row4">
+                    <div>
+                        <label>First Name</label>
+                        <input type="text" name="fname" class="input-field" value="{{ $user->fullname }}" readonly>
+                    </div>
+                    <div>
+                        <label>Surname</label>
+                        <input type="text" name="surname" class="input-field" value="{{ $user->surname }}" readonly>
+                    </div>
+                    <div>
+                        <label>Job Title</label>
+                        <input type="text" name="job-title" class="input-field" value="{{ $user->job_title }}" readonly>
+                    </div>
+                    <div>
+                        <label>Faculty</label>
+                        <input type="text" name="faculty" class="input-field" value="{{ $user->faculty }}" readonly>
+                    </div>
+                </div>
+                <div class="row2">
+                    <div>
+                        <label>Email</label>
+                        <input type="text" name="email" class="input-field" value="{{ $user->email }}" readonly>
+                    </div>
+                    <div>
+                        <label>Department</label>
+                        <input type="text" name="department" class="input-field" value="{{ $user->department }}" readonly>
+                    </div>
+                </div>

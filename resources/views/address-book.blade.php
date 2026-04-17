@@ -5,6 +5,19 @@
   <title>Address Book – UNAM Intranet</title>
 @include('includes.head')
 </head>
+<style>
+  .red-button {
+            width: 100%;
+            padding: 12px;
+            background-color: #ee3124;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+</style>
 <body>
 
 @include('includes.sidebar')
@@ -20,29 +33,63 @@
     <p style="font-size:14px;color:var(--text-muted);line-height:1.65;margin-bottom:20px;">
       Search for staff contact details by name, surname, or department across all UNAM campuses.
     </p>
+
+    <form action="{{ route('address-book.search') }}" method="POST">
+      @csrf
     <div class="search-form sf">
       <div class="srow">
-        <div class="ig"><label>First Name</label><input type="text" id="sfn" placeholder="e.g. John"></div>
-        <div class="ig"><label>Surname</label><input type="text" id="ssn" placeholder="e.g. Shilongo"></div>
+        <div class="ig"><label>First Name</label><input type="text" name="sfn" placeholder="e.g. John"></div>
+        <div class="ig"><label>Surname</label><input type="text" name="ssn" placeholder="e.g. Shilongo"></div>
       </div>
       <div class="ig">
         <label>Department / Faculty</label>
-        <input type="text" id="sdept" placeholder="e.g. Faculty of Science, Human Capital…">
+        <input type="text" name="sdept" placeholder="e.g. Faculty of Science, Human Capital…">
       </div>
-      <button class="btn-p" onclick="doSearch()">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        Search
-      </button>
+     <button type="submit" class="red-button">Search</button>
+            
       <p class="stip">Tip: Search by <span>surname</span> or <span>department name</span> for best results.</p>
     </div>
+    </form>
   </div>
 
-  <div id="res-area" style="display:none;">
+  
+
+@if(isset($results))
+<div id="res-area" style="margin-top: 20px;">
     <div class="card">
-      <div class="sec-label"><div class="bar"></div><h2>Results</h2></div>
-      <div id="res-content"></div>
+        <div class="sec-label"><div class="bar"></div><h2>Results</h2></div>
+        
+        <table class="results-table" style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+            <thead>
+                <tr style="background-color: #ee3124; color: white; text-align: left;">
+                    <th style="padding: 10px;">Full Name</th>
+                    <th style="padding: 10px;">Position</th>
+                    <th style="padding: 10px;">Email Address</th>
+                    <th style="padding: 10px;">Tel Nr</th>
+                    <th style="padding: 10px;">Department</th>
+                </tr>
+            </thead>
+            <tbody>
+                @forelse($results as $person)
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px; font-weight: bold;">{{ $person->full_name }}</td>
+                        <td style="padding: 10px; font-size: 13px;">{{ $person->position }}</td>
+                        <td style="padding: 10px; font-size: 13px;">{{ $person->email }}</td>
+                        <td style="padding: 10px; font-size: 13px;">{{ $person->tell }}</td>
+                        <td style="padding: 10px; font-size: 13px;">{{ $person->department }}</td>
+                    </tr>
+                @empty
+                    <tr>
+                        <td colspan="5" style="padding: 20px; text-align: center; color: #666;">
+                            No colleagues found matching your search.
+                        </td>
+                    </tr>
+                @endforelse
+            </tbody>
+        </table>
     </div>
-  </div>
+</div>
+@endif
 
   <div class="card">
     <div class="sec-label"><div class="bar"></div><h2>Quick Contacts</h2></div>
@@ -73,21 +120,6 @@
 </main>
 
 @include('includes.scripts')
-<script>
-function doSearch() {
-  const fn   = document.getElementById('sfn').value.trim();
-  const sn   = document.getElementById('ssn').value.trim();
-  const dept = document.getElementById('sdept').value.trim();
-  const area = document.getElementById('res-area');
-  const content = document.getElementById('res-content');
-  area.style.display = 'block';
-  if (!fn && !sn && !dept) {
-    content.innerHTML = '<div class="empty-state"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><p>Please enter a name or department to search.</p></div>';
-  } else {
-    const q = [fn, sn, dept].filter(Boolean).join(' / ');
-    content.innerHTML = '<div class="empty-state"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><p>Searching for <strong>"' + q + '"</strong>&hellip;<br><span style="font-size:12px;color:#aaa;margin-top:4px;display:block;">Connect to the staff directory API to display live results.</span></p></div>';
-  }
-}
-</script>
+
 </body>
 </html>

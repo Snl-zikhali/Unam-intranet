@@ -3,6 +3,11 @@ use App\Http\Controllers\EmployeeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ItsAccessController;
 use App\Http\Controllers\PersonalDetail;
+use App\Http\Controllers\AddressBookController;
+
+
+
+// sidebar pages
 
 Route::get('/', function () {
     return view('address-book');
@@ -53,7 +58,7 @@ Route::get('/technology',function() {
 });
 
 
-
+//It ACCESS
 
 Route::post('/technology/personnel_no', [ItsAccessController::class, 'store'])->name('its.access.store');
 
@@ -61,7 +66,21 @@ Route::get('/its-access', function (){
     return view('personnel-no');
 });
 
-
-
 Route::post('/dis-info',[PersonalDetail::class, 'getPersonaldetail'])->name('verify.info');
 
+
+//Address book
+
+Route::post('/staff-details', [AddressBookController::class, 'store'])->name('staff.detail.store');
+
+Route::get('/staff-info', function(){
+    return view('staff-details');
+});
+
+//Route::post('/address-book/staff-details', [AddressBookController::class, 'getStaffDetail'])->name('address-book.search');
+
+// Change this line:
+// Route::post('/address-book/staff-details', [AddressBookController::class, 'getStaffDetail'])->name('address-book.search');
+
+// To this (Supports both searching and clicking a specific name):
+Route::match(['get', 'post'], '/address-book/search', [AddressBookController::class, 'getStaffDetail'])->name('address-book.search');

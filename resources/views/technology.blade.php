@@ -122,7 +122,7 @@
           ITS Access
         </div>
         <span style="font-size:12px;color:var(--red-dark);">
-        <a href="/its-access" target="_blank" class="target-danger">Get Access</a></span>
+       <a href="/its-access" style="color:var(--red);font-weight:600;text-decoration:none;">Get Access</a></span>
       </div>
      
      

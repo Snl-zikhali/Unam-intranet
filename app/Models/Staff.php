@@ -4,10 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class User extends Model
+class Staff extends Model
 {
-protected $table = 'employees';
-protected $fillable = ['full_name', 'department', 'position', 'email', 'tell'];
+    protected $table = 'staff';
+protected $fillable = ['full_name', 'department', 'position', 'email', 'tell', 'is_active',];
 
 
  protected $hidden = [

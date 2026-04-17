@@ -120,7 +120,7 @@
       </div></div>
     </div>
 
-  </div><!-- /.acc -->
+  </div>
 </main>
 
 @include('includes.scripts')

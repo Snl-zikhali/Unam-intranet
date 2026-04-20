@@ -15,7 +15,7 @@
     <h1 class="page-title">Useful <em>Links</em></h1>
   </div>
 
-  <div class="card">
+  <div class="card" style="background-color:white">
     <div class="sec-label"><div class="bar"></div><h2>External Resources</h2></div>
     <div class="dlist">
 

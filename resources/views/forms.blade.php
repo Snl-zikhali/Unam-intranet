@@ -15,13 +15,13 @@
     <h1 class="page-title">Forms &amp; <em>Templates</em></h1>
   </div>
 
-  <div class="card" style="margin-bottom:18px;">
+  <div class="card" style="margin-bottom:18px; background-color:white">
     <p style="font-size:14px;color:var(--text-muted);line-height:1.7;">
       Download official UNAM forms and templates organised by department. All documents are current for the 2026 academic year.
     </p>
   </div>
 
-  <div class="fgrid">
+  <div class="fgrid" >
 
     <?php
     $categories = [
@@ -72,7 +72,7 @@
 
     foreach ($categories as $cat):
     ?>
-    <div class="fcat" onclick="tfc(this)">
+    <div class="fcat" style="background-color:white" onclick="tfc(this)">
       <div class="fch">
         <div class="fct">
           <div class="fci"><?= $cat['icon'] ?></div>
@@ -80,7 +80,7 @@
         </div>
         <?= $chev_icon ?>
       </div>
-      <div class="fcb"><div class="fcb-in">
+      <div class="fcb" style="background-color:white"><div class="fcb-in">
         <?php foreach ($cat['files'] as $file): ?>
           <div class="ff"><?= $file_icon ?><?= $file ?></div>
         <?php endforeach; ?>

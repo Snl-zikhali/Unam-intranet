@@ -17,6 +17,10 @@
             font-weight: bold;
             font-size: 1rem;
         }
+
+        .card{
+          background-color: white;
+        }
 </style>
 <body>
 

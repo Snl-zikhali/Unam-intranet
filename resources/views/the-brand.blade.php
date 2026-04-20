@@ -22,7 +22,7 @@
     <h1 class="page-title">Brand <em>Guidance</em></h1>
   </div>
 
-  <div class="card">
+  <div class="card" style="background-color:white">
     <div class="sec-label"><div class="bar"></div><h2>Brand Guidance</h2></div>
     <ul style="list-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:22px;">
       <li style="display:flex;align-items:flex-start;gap:12px;font-size:14.5px;line-height:1.65;">
@@ -42,7 +42,7 @@
         Logos and brand assets can be requested from the Design Section by calling the numbers below.
       </li>
     </ul>
-    <div class="callout">
+    <div class="callout" >
       <div class="dept-tag">CEIRD</div>
       <p>All design-related matters must be handled in consultation with <strong style="color:var(--red-dark);">Corporate Engagement &amp; International Relations (CEIRD)</strong>.</p>
       <div style="display:flex;gap:12px;margin-top:10px;">
@@ -58,7 +58,7 @@
     </div>
   </div>
 
-  <div class="card">
+  <div class="card" style="background-color:white">
     <div class="sec-label"><div class="bar"></div><h2>Staff &amp; Students</h2></div>
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:22px;">
       <div class="sc"><div class="snum">12</div><div class="slbl">Campuses</div></div>

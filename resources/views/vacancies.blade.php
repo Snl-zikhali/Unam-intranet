@@ -15,7 +15,7 @@
     <h1 class="page-title">Internal <em>Vacancies</em></h1>
   </div>
 
-  <div class="card" style="margin-bottom:18px;">
+  <div class="card" style="margin-bottom:18px; background-color: white;">
     <p style="font-size:14px;color:var(--text-muted);line-height:1.7;">
       Internal vacancies are available exclusively to current UNAM staff. Expand a listing to view details and download job descriptions.
       For technical inquiries contact <strong style="color:var(--red-dark);">206 3041</strong>.
@@ -25,7 +25,7 @@
   <div class="acc">
 
     <!-- Vacancy 1 -->
-    <div class="ai" onclick="ta(this)">
+    <div class="ai" style="background-color:white" onclick="ta(this)">
       <div class="ah">
         <div class="ah-l">
           <div class="aic">
@@ -56,7 +56,7 @@
     </div>
 
     <!-- Vacancy 2 -->
-    <div class="ai" onclick="ta(this)">
+    <div class="ai" style="background-color:white" onclick="ta(this)">
       <div class="ah">
         <div class="ah-l">
           <div class="aic">
@@ -90,7 +90,7 @@
     </div>
 
     <!-- Vacancy 3 -->
-    <div class="ai" onclick="ta(this)">
+    <div class="ai" style="background-color:white" onclick="ta(this)">
       <div class="ah">
         <div class="ah-l">
           <div class="aic">

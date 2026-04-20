@@ -15,7 +15,7 @@
     <h1 class="page-title">Policies &amp; <em>Procedures</em></h1>
   </div>
 
-  <div class="card" style="margin-bottom:18px;">
+  <div class="card" style="margin-bottom:18px; background-color:white" >
     <p style="font-size:14px;color:var(--text-muted);line-height:1.7;">
       All UNAM policies are reviewed regularly and approved by Council. Staff must familiarise themselves with policies relevant to their roles. Contact the relevant office for queries.
     </p>
@@ -85,9 +85,9 @@
   ];
   ?>
 
-  <div class="acc">
+  <div class="acc" >
     <?php foreach ($sections as $s): ?>
-    <div class="ai" onclick="ta(this)">
+    <div class="ai" style="background-color:white" onclick="ta(this)">
       <div class="ah">
         <div class="ah-l">
           <div class="aic"><?= $s['icon'] ?></div>

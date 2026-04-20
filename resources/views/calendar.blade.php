@@ -20,7 +20,7 @@
     Download 2026 Full Calendar (PDF)
   </button>
 
-  <div class="card">
+  <div class="card" style="background-color:white">
     <div class="sec-label"><div class="bar"></div><h2>Core Dates 2026</h2></div>
 
     <div class="sem-title">Semester 1</div>

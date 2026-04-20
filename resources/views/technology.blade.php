@@ -111,7 +111,7 @@
     <h1 class="page-title">TECHNOLOGY<em></em></e> <em>Services</em></h1>
   </div>
 
-  <div class="card">
+  <div class="card" style="background-color:white">
     <div class="sec-label"><div class="bar"></div><h2>ICT Self-Service &amp; Contacts</h2></div>
     <div class="dlist">
 

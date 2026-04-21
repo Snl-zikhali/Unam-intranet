@@ -9,8 +9,23 @@
   --text: #464343; --text-muted: #5a5a5a; --border: #e5e1dc;
   --sidebar-w: 210px; --ease: cubic-bezier(.4,0,.2,1);
 }
-body { font-family: 'DM Sans', sans-serif; background: var(--off-white); color: var(--text); display: flex; min-height: 100vh; }
-
+body {
+    margin: 0;
+    min-height: 100vh;
+    /* Replace 'your-image.jpg' with your actual file path */
+    background-image: url('images/back2.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+body {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+	font-size: 14px;
+	color: #545454;
+	
+}
 /* SIDEBAR */
 aside { width: var(--sidebar-w); background: var(--red); display: flex; flex-direction: column; position: fixed; top: 0; left: 0; height: 100vh; z-index: 100; overflow-y: auto; }
 .logo-area { padding: 26px 20px 20px; border-bottom: 1px solid rgba(255,255,255,0.15); }
@@ -78,7 +93,7 @@ main { margin-left: var(--sidebar-w); flex:1; padding: 46px 56px; min-height:100
 .search-form { display:flex; flex-direction:column; gap:12px; max-width:560px; }
 .ig { display:flex; flex-direction:column; gap:5px; }
 .ig label { font-size:11px; font-weight:600; letter-spacing:0.8px; text-transform:uppercase; color:var(--text-muted); }
-.sf input { width:100%; padding:12px 16px; border:1.5px solid var(--border); border-radius:7px; font-size:14.5px; font-family:'Source Sans 3',sans-serif; color:var(--text); background:var(--off-white); transition:border-color 0.18s,box-shadow 0.18s; outline:none; }
+.sf input { width:100%; padding:12px 16px; border:1.5px solid var(--border); border-radius:7px; font-size:14.5px; font-family:'DM Sans',sans-serif; color:var(--text); background:var(--off-white); transition:border-color 0.18s,box-shadow 0.18s; outline:none; }
 .sf input:focus { border-color:var(--red); box-shadow:0 0 0 3px rgba(200,16,46,0.1); background:#fff; }
 .srow { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
 .btn-p { display:inline-flex; align-items:center; gap:8px; background:var(--red); color:#fff; border:none; border-radius:7px; padding:11px 26px; font-size:13px; font-weight:600; letter-spacing:0.8px; text-transform:uppercase; cursor:pointer; transition:background 0.18s,transform 0.1s; align-self:flex-start; margin-top:4px; }

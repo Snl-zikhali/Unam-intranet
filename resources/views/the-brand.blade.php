@@ -11,7 +11,20 @@
 	font-size: 14px;
 	color: #545454;
 	
-}</style>
+}
+  .card {
+    background: rgba(255, 255, 255, 0.6); /* Semi-transparent white */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(12px);
+    
+    /* White border to help it stand out from the gray background */
+    border: 1px solid rgba(255, 255, 255, 0.7); 
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+
+</style>
 <body>
 
 @include('includes.sidebar')
@@ -22,7 +35,7 @@
     <h1 class="page-title">Brand <em>Guidance</em></h1>
   </div>
 
-  <div class="card" style="background-color:white">
+  <div class="card">
     <div class="sec-label"><div class="bar"></div><h2>Brand Guidance</h2></div>
     <ul style="list-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:22px;">
       <li style="display:flex;align-items:flex-start;gap:12px;font-size:14.5px;line-height:1.65;">
@@ -58,7 +71,7 @@
     </div>
   </div>
 
-  <div class="card" style="background-color:white">
+  <div class="card">
     <div class="sec-label"><div class="bar"></div><h2>Staff &amp; Students</h2></div>
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:22px;">
       <div class="sc"><div class="snum">12</div><div class="slbl">Campuses</div></div>

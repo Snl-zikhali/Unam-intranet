@@ -74,7 +74,7 @@ Route::post('/dis-info',[PersonalDetail::class, 'getPersonaldetail'])->name('ver
 Route::post('/staff-details', [AddressBookController::class, 'store'])->name('staff.detail.store');
 
 Route::get('/staff-info', function(){
-    return view('staff-details');
+    return view('address-book');
 });
 
 //Route::post('/address-book/staff-details', [AddressBookController::class, 'getStaffDetail'])->name('address-book.search');
@@ -83,4 +83,4 @@ Route::get('/staff-info', function(){
 // Route::post('/address-book/staff-details', [AddressBookController::class, 'getStaffDetail'])->name('address-book.search');
 
 // To this (Supports both searching and clicking a specific name):
-Route::match(['get', 'post'], '/address-book/search', [AddressBookController::class, 'getStaffDetail'])->name('address-book.search');
+Route::match(['get', 'post'], '/address-book', [AddressBookController::class, 'getStaffDetail'])->name('address-book.search');

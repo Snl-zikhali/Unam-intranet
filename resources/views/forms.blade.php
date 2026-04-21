@@ -5,6 +5,40 @@
   <title>Forms &amp; Templates – UNAM Intranet</title>
  @include('includes.head')
 </head>
+  <style> 
+  .card{
+    background: rgba(255, 255, 255, 0.6); /* Semi-transparent white */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    
+    /* White border to help it stand out from the gray background */
+    border: 1px solid rgba(255, 255, 255, 0.7); 
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+  .fgrid {
+    background: rgba(255, 255, 255, 0.6); /* Semi-transparent white */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    
+    /* White border to help it stand out from the gray background */
+    border: 1px solid rgba(255, 255, 255, 0.7); 
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+  .fcat {
+    background: rgba(255, 255, 255, 0.6); /* Semi-transparent white */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    
+    /* White border to help it stand out from the gray background */
+    border: 1px solid rgba(255, 255, 255, 0.7); 
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+</style>
 <body>
 
 @include('includes.sidebar')
@@ -15,7 +49,7 @@
     <h1 class="page-title">Forms &amp; <em>Templates</em></h1>
   </div>
 
-  <div class="card" style="margin-bottom:18px; background-color:white">
+  <div class="card">
     <p style="font-size:14px;color:var(--text-muted);line-height:1.7;">
       Download official UNAM forms and templates organised by department. All documents are current for the 2026 academic year.
     </p>
@@ -72,7 +106,7 @@
 
     foreach ($categories as $cat):
     ?>
-    <div class="fcat" style="background-color:white" onclick="tfc(this)">
+    <div class="fcat" onclick="tfc(this)">
       <div class="fch">
         <div class="fct">
           <div class="fci"><?= $cat['icon'] ?></div>
@@ -80,7 +114,7 @@
         </div>
         <?= $chev_icon ?>
       </div>
-      <div class="fcb" style="background-color:white"><div class="fcb-in">
+      <div class="fcb"><div class="fcb-in">
         <?php foreach ($cat['files'] as $file): ?>
           <div class="ff"><?= $file_icon ?><?= $file ?></div>
         <?php endforeach; ?>

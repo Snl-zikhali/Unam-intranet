@@ -16,6 +16,13 @@
     background: #f0eeeb;
     /* removed display: flex — sidebar is fixed, not in flow */
 }
+body {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+	font-size: 14px;
+	color: #545454;
+	
+}
         /* ── Main area (everything beside the sidebar) ── */
       .main-content {
     flex: 1;
@@ -209,7 +216,16 @@
         .red-button:hover {
             opacity: 0.88;
         }
-
+  .form-card {
+    background: rgba(255, 255, 255, 0.6); /* Semi-transparent white */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    
+    /* White border to help it stand out from the gray background */
+    border: 1px solid rgba(255, 255, 255, 0.7); 
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
     </style>
 
     @include('includes.head')

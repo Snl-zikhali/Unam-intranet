@@ -10,6 +10,7 @@
 
         /* ── Page layout ── */
      body {
+    background:url('imagee/back2.png');
     margin: 0;
     padding: 0;
     font-family: 'Dm', sans-serif;

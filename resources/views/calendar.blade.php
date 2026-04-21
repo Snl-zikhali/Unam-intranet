@@ -5,6 +5,16 @@
   <title>Calendar – UNAM Intranet</title>
   @include('includes.head')
 </head>
+ <style>.card {
+    background: rgba(255, 255, 255, 0.6); /* Semi-transparent white */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(10px);
+    
+    /* White border to help it stand out from the gray background */
+    border: 1px solid rgba(255, 255, 255, 0.7); 
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}</style> 
 <body>
 
 @include('includes.sidebar')
@@ -20,7 +30,7 @@
     Download 2026 Full Calendar (PDF)
   </button>
 
-  <div class="card" style="background-color:white">
+  <div class="card">
     <div class="sec-label"><div class="bar"></div><h2>Core Dates 2026</h2></div>
 
     <div class="sem-title">Semester 1</div>

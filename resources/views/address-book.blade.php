@@ -8,7 +8,7 @@
 <style>
   .red-button {
             width: 100%;
-            padding: 12px;
+            padding: px;
             background-color: #ee3124;
             color: white;
             border: none;
@@ -48,17 +48,13 @@
     <form action="{{ route('address-book.search') }}" method="POST">
       @csrf
     <div class="search-form sf">
-      <div class="srow">
-        <div class="ig"><label>First Name</label><input type="text" name="sfn" placeholder="e.g. John"></div>
-        <div class="ig"><label>Surname</label><input type="text" name="ssn" placeholder="e.g. Shilongo"></div>
-      </div>
-      <div class="ig">
-        <label>Department / Faculty</label>
-        <input type="text" name="sdept" placeholder="e.g. Faculty of Science, Human Capital…">
-      </div>
-     <button type="submit" class="red-button">Search</button>
+    <div class="ig">
+        <label>Search Colleague</label>
+        <input type="text" id="search-input" name="search" placeholder="Enter name or department...">
+    </div>
+     
             
-      <p class="stip">Tip: Search by <span>surname</span> or <span>department name</span> for best results.</p>
+      <p class="stip">Tip: Search by <span>name</span> or <span>department</span> for best results.</p>
     </div>
     </form>
   </div>
@@ -66,7 +62,7 @@
   
 
 @if(isset($results))
-<div id="res-area" style="margin-top: 20px;">
+<div id="res-area" style="margin-top: 20px; display: none;">
     <div class="card">
         <div class="sec-label"><div class="bar"></div><h2>Results</h2></div>
         
@@ -80,23 +76,8 @@
                     <th style="padding: 10px;">Department</th>
                 </tr>
             </thead>
-            <tbody>
-                @forelse($results as $person)
-                    <tr style="border-bottom: 1px solid #eee;">
-                        <td style="padding: 10px; font-weight: bold;">{{ $person->full_name }}</td>
-                        <td style="padding: 10px; font-size: 13px;">{{ $person->position }}</td>
-                        <td style="padding: 10px; font-size: 13px;">{{ $person->email }}</td>
-                        <td style="padding: 10px; font-size: 13px;">{{ $person->tell }}</td>
-                        <td style="padding: 10px; font-size: 13px;">{{ $person->department }}</td>
-                    </tr>
-                @empty
-                    <tr>
-                        <td colspan="5" style="padding: 20px; text-align: center; color: #666;">
-                            No colleagues found matching your search.
-                        </td>
-                    </tr>
-                @endforelse
-            </tbody>
+            <tbody id="table-results-body">
+                </tbody>
         </table>
     </div>
 </div>
@@ -129,7 +110,134 @@
     </div>
   </div>
 </main>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('search-input');
+    const resArea = document.getElementById('res-area');
+    const tableBody = document.getElementById('table-results-body');
+    
+    let debounceTimer;
 
+    const handleSearch = () => {
+        const query = searchInput.value.trim();
+        
+        if (query.length > 0) {
+            resArea.style.display = 'block';
+            clearTimeout(debounceTimer);
+            
+            debounceTimer = setTimeout(() => {
+                fetchResults(query);
+            }, 300);
+        } else {
+            resArea.style.display = 'none';
+            tableBody.innerHTML = '';
+        }
+    };
+
+    const fetchResults = (query) => {
+        tableBody.innerHTML = '<tr><td colspan="5" style="padding:20px; text-align:center; color: #999;">Searching...</td></tr>';
+        
+        const requestData = { search: query };
+        const routeUrl = "{{ route('address-book.search') }}";
+        
+        console.log('🔍 Search Query:', query);
+        console.log('📤 Request Data:', requestData);
+        console.log('🔗 Route URL:', routeUrl);
+        console.log('🔐 CSRF Token:', '{{ csrf_token() }}');
+        
+        fetch(routeUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(requestData)
+        })
+        .then(response => {
+            console.log('📥 Response Status:', response.status);
+            console.log('📥 Response OK:', response.ok);
+            
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}`);
+            }
+            return response.text();
+        })
+        .then(text => {
+            console.log('📋 Raw Response (first 500 chars):', text.substring(0, 500));
+            console.log('📋 Response Length:', text.length);
+            console.log('📋 Response starts with:', text.substring(0, 100));
+            
+            // Check if response is HTML instead of JSON
+            if (text.trim().startsWith('<')) {
+                console.error('❌ ERROR: Server returned HTML instead of JSON!');
+                console.error('HTML returned:', text.substring(0, 1000));
+                throw new Error('Server is returning HTML. Controller may not be detecting AJAX request.');
+            }
+            
+            try {
+                const data = JSON.parse(text);
+                console.log('✅ Parsed Data:', data);
+                
+                tableBody.innerHTML = '';
+                const results = Array.isArray(data) ? data : (data.data || []);
+                
+                console.log('📊 Results Count:', results.length);
+                
+                if(results.length > 0) {
+                    results.forEach((person) => {
+                        const row = document.createElement('tr');
+                        row.style.borderBottom = '1px solid #eee';
+                        row.innerHTML = `
+                            <td style="padding: 10px; font-weight: bold;">${escapeHtml(person.full_name || '')}</td>
+                            <td style="padding: 10px; font-size: 13px;">${escapeHtml(person.position || '')}</td>
+                            <td style="padding: 10px; font-size: 13px;">
+                                <a href="mailto:${escapeHtml(person.email || '')}" style="color: #ee3124; text-decoration: none;">
+                                    ${escapeHtml(person.email || '')}
+                                </a>
+                            </td>
+                            <td style="padding: 10px; font-size: 13px;">${escapeHtml(person.tell || person.phone || '')}</td>
+                            <td style="padding: 10px; font-size: 13px;">${escapeHtml(person.department || '')}</td>
+                        `;
+                        tableBody.appendChild(row);
+                    });
+                } else {
+                    tableBody.innerHTML = '<tr><td colspan="5" style="padding:20px; text-align:center; color: #666;">No results found.</td></tr>';
+                }
+            } catch (parseError) {
+                console.error('❌ JSON Parse Error:', parseError);
+                console.error('Response text was:', text);
+                tableBody.innerHTML = '<tr><td colspan="5" style="padding:20px; text-align:center; color: #d9534f;">Error parsing response.</td></tr>';
+            }
+        })
+        .catch(error => {
+            console.error('❌ Fetch Error:', error.message);
+            console.error('Full Error:', error);
+            tableBody.innerHTML = '<tr><td colspan="5" style="padding:20px; text-align:center; color: #d9534f;">Error fetching results: ' + error.message + '</td></tr>';
+        });
+    };
+
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
+    if (searchInput) {
+        searchInput.addEventListener('input', handleSearch);
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                clearTimeout(debounceTimer);
+                const query = searchInput.value.trim();
+                if (query.length > 0) {
+                    fetchResults(query);
+                }
+            }
+        });
+    }
+});
+</script>
 @include('includes.scripts')
 
 </body>

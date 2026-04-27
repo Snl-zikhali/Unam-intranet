@@ -1,6 +1,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href=<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<!-- Add this line at the TOP of your head file -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="{{ asset('css/app.css') }}">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
@@ -13,11 +16,12 @@ body {
     margin: 0;
     min-height: 100vh;
     /* Replace 'your-image.jpg' with your actual file path */
-    background-image: url('images/back2.png');
+    background-image: url('images/unam.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
+    
 }
 body {
 	font-family: 'Roboto', sans-serif;

@@ -5,6 +5,31 @@
   <title>Vacancies – UNAM Intranet</title>
   @include('includes.head')
 </head>
+  <style>.card {
+    background: rgba(255, 255, 255, 0.6); /* Semi-transparent white */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(12px);
+    
+    /* White border to help it stand out from the gray background */
+    border: 1px solid rgba(255, 255, 255, 0.7); 
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.ai {
+    background: rgba(255, 255, 255, 0.6); /* Semi-transparent white */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(12px);
+    
+    /* White border to help it stand out from the gray background */
+    border: 1px solid rgba(255, 255, 255, 0.7); 
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+
+
+</style>
 <body>
 
 @include('includes.sidebar')
@@ -15,7 +40,7 @@
     <h1 class="page-title">Internal <em>Vacancies</em></h1>
   </div>
 
-  <div class="card" style="margin-bottom:18px; background-color: white;">
+  <div class="card" >
     <p style="font-size:14px;color:var(--text-muted);line-height:1.7;">
       Internal vacancies are available exclusively to current UNAM staff. Expand a listing to view details and download job descriptions.
       For technical inquiries contact <strong style="color:var(--red-dark);">206 3041</strong>.
@@ -25,7 +50,7 @@
   <div class="acc">
 
     <!-- Vacancy 1 -->
-    <div class="ai" style="background-color:white" onclick="ta(this)">
+    <div class="ai" onclick="ta(this)">
       <div class="ah">
         <div class="ah-l">
           <div class="aic">
@@ -56,7 +81,7 @@
     </div>
 
     <!-- Vacancy 2 -->
-    <div class="ai" style="background-color:white" onclick="ta(this)">
+    <div class="ai"  onclick="ta(this)">
       <div class="ah">
         <div class="ah-l">
           <div class="aic">
@@ -90,7 +115,7 @@
     </div>
 
     <!-- Vacancy 3 -->
-    <div class="ai" style="background-color:white" onclick="ta(this)">
+    <div class="ai"  onclick="ta(this)">
       <div class="ah">
         <div class="ah-l">
           <div class="aic">

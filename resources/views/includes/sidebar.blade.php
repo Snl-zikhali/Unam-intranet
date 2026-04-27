@@ -9,11 +9,55 @@ function navLink($page, $label, $icon, $activePage) {
 }
 @endphp
 ?>
-<aside>
-  <div class="logo-area">
- <img src="{{ asset('images/top_logo.jpg') }}" alt="UNAM Logo" class="logo-img">
-</div>  
+
+<!-- Mobile Navbar (shown on small screens) -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top d-lg-none">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">
+      <strong>UNAM</strong>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMobile" aria-controls="navbarMobile" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarMobile">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link {{ $activePage === 'address-book' ? 'active' : '' }}" href="{{ url('address-book') }}">Address Book</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {{ $activePage === 'the-brand' ? 'active' : '' }}" href="{{ url('the-brand') }}">The Brand</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {{ $activePage === 'vacancies' ? 'active' : '' }}" href="{{ url('vacancies') }}">Vacancies</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {{ $activePage === 'statistics' ? 'active' : '' }}" href="{{ url('statistics') }}">Statistics</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {{ $activePage === 'forms' ? 'active' : '' }}" href="{{ url('forms') }}">Forms</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {{ $activePage === 'policies' ? 'active' : '' }}" href="{{ url('policies') }}">Policies</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {{ $activePage === 'calendar' ? 'active' : '' }}" href="{{ url('calendar') }}">Calendar</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {{ $activePage === 'links' ? 'active' : '' }}" href="{{ url('links') }}">Links</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {{ $activePage === 'technology' ? 'active' : '' }}" href="{{ url('technology') }}">Technology</a>
+        </li>
+      </ul>
+    </div>
   </div>
+</nav>
+
+<!-- Desktop Sidebar (hidden on small screens) -->
+<aside class="d-none d-lg-block">
+  <div class="logo-area">
+    <img src="{{ asset('images/top_logo.jpg') }}" alt="UNAM Logo" class="logo-img">
+  </div>  
   <nav>
     @php
     $icon_address_book = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M4 6h16M4 10h16M4 14h8"/></svg>';
@@ -41,3 +85,46 @@ function navLink($page, $label, $icon, $activePage) {
   </nav>
   <div class="sidebar-footer"><div class="tagline">Open Your Mind</div></div>
 </aside>
+
+<style>
+/* Mobile Navbar Styling */
+.navbar {
+  background-color: #222 !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.navbar-brand {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #ee3124 !important;
+}
+
+.nav-link {
+  color: #ccc !important;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+  padding: 0.5rem 0 !important;
+  border-bottom: 1px solid rgba(238, 49, 36, 0.2);
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #ee3124 !important;
+  font-weight: 600;
+}
+
+.navbar-toggler {
+  border-color: #ee3124;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23ee3124' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* Ensure sidebar stays on desktop */
+@media (min-width: 992px) {
+  aside {
+    display: block !important;
+  }
+}
+</style>

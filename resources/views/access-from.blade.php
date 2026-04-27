@@ -58,7 +58,7 @@ body {
             color: rgba(255, 255, 255, 0.75);
             font-size: 14px;
             margin: 0;
-            padding: 0 12px 5px;
+            padding: 4px 15px 5px;
         }
 
         /* ── Form body ── */

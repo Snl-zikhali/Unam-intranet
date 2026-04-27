@@ -6,32 +6,37 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Staff;
 
-
 class AddressBookController
 {    
-// Change 'public function search' to 'public function getStaffDetail' 
-// to match your web.php route
-public function getStaffDetail(Request $request)
-{
-    // These names MUST match the 'name' attribute in your HTML form
-    $search = $request->input('sfn'); // First Name input
-    $surname = $request->input('ssn'); // Surname input
-    $dept = $request->input('sdept'); // Department input
+    public function getStaffDetail(Request $request)
+    {
+        $search = $request->input('search');
+        $query = Staff::query();
+        
+        if ($search) {
+            // Split search into individual words
+            $words = explode(' ', trim($search));
+            
+            // Search where ANY word matches full_name OR department
+            foreach ($words as $word) {
+                if (!empty($word)) {
+                    $word = trim($word);
+                    $query->where(function($q) use ($word) {
+                        $q->where('full_name', 'like', "%{$word}%")
+                          ->orWhere('department', 'like', "%{$word}%");
+                    });
+                }
+            }
+        }
+        
+        $results = $query->get();
 
-    $results = Staff::query()
-        ->when($search, function($q) use ($search) {
-            return $q->where('full_name', 'like', "%{$search}%");
-        })
-        ->when($surname, function($q) use ($surname) {
-            return $q->where('full_name', 'like', "%{$surname}%");
-        })
-        ->when($dept, function($q) use ($dept) {
-            return $q->where('department', 'like', "%{$dept}%");
-        })
-        ->get();
+        // Always return JSON for AJAX requests
+        if ($request->wantsJson() || $request->expectsJson() || $request->header('Accept') === 'application/json') {
+            return response()->json($results);
+        }
 
-    return view('address-book', compact('results'));
-}
-
-
+        // For non-AJAX requests, show the view
+        return view('address-book', compact('results'));
+    }
 }

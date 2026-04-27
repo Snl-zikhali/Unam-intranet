@@ -84,3 +84,7 @@ Route::get('/staff-info', function(){
 
 // To this (Supports both searching and clicking a specific name):
 Route::match(['get', 'post'], '/address-book', [AddressBookController::class, 'getStaffDetail'])->name('address-book.search');
+
+Route::get('/', function () {
+    return view('app');  // Points to resources/views/app.blade.php
+});

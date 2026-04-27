@@ -5,6 +5,30 @@
   <title>Policies &amp; Training – UNAM Intranet</title>
   @include('includes.head')
 </head>
+
+<style>
+  .card {
+    background: rgba(255, 255, 255, 0.6); /* Semi-transparent white */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(12px);
+    
+    /* White border to help it stand out from the gray background */
+    border: 1px solid rgba(255, 255, 255, 0.7); 
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+. {
+    background: rgba(255, 255, 255, 0.6); /* Semi-transparent white */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(12px);
+    
+    /* White border to help it stand out from the gray background */
+    border: 1px solid rgba(255, 255, 255, 0.7); 
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+</style>
 <body>
 
 @include('includes.sidebar')
@@ -15,13 +39,14 @@
     <h1 class="page-title">Policies &amp; <em>Procedures</em></h1>
   </div>
 
-  <div class="card" style="margin-bottom:18px; background-color:white" >
+  <div class="card">
     <p style="font-size:14px;color:var(--text-muted);line-height:1.7;">
       All UNAM policies are reviewed regularly and approved by Council. Staff must familiarise themselves with policies relevant to their roles. Contact the relevant office for queries.
     </p>
   </div>
 
   <?php
+  
   $doc_icon = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16h16V8z"/></svg>';
   $chev     = '<svg class="achev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>';
 

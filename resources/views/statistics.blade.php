@@ -5,6 +5,28 @@
   <title>Statistics – UNAM Intranet</title>
 @include('includes.head')
 </head>
+<style>.card {
+    background: rgba(255, 255, 255, 0.6); /* Semi-transparent white */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(12px);
+    
+    /* White border to help it stand out from the gray background */
+    border: 1px solid rgba(255, 255, 255, 0.7); 
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.ai {
+    background: rgba(255, 255, 255, 0.6); /* Semi-transparent white */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(12px);
+    
+    /* White border to help it stand out from the gray background */
+    border: 1px solid rgba(255, 255, 255, 0.7); 
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+</style>
 <body>
 
 @include('includes.sidebar')
@@ -15,7 +37,7 @@
     <h1 class="page-title">Institutional <em>Statistics</em></h1>
   </div>
 
-  <div class="card" style="background-color:white">
+  <div class="card" >
     <div class="sec-label"><div class="bar"></div><h2>At a Glance – 2025</h2></div>
     <div class="sgrid">
       <div class="sc"><div class="snum">27,400+</div><div class="slbl">Enrolled Students</div></div>
@@ -28,7 +50,7 @@
   <div class="acc">
 
     <!-- Enrolment -->
-    <div class="ai" style="background-color:white" onclick="ta(this)">
+    <div class="ai" onclick="ta(this)">
       <div class="ah">
         <div class="ah-l">
           <div class="aic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg></div>
@@ -47,7 +69,7 @@
     </div>
 
     <!-- IR -->
-    <div class="ai" style="background-color:white" onclick="ta(this)">
+    <div class="ai" onclick="ta(this)">
       <div class="ah">
         <div class="ah-l">
           <div class="aic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
@@ -74,7 +96,7 @@
     </div>
 
     <!-- Performance -->
-    <div class="ai" style="background-color:white" onclick="ta(this)">
+    <div class="ai"  onclick="ta(this)">
       <div class="ah">
         <div class="ah-l">
           <div class="aic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>

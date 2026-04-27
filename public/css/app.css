@@ -10,4 +10,63 @@
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
 
+@import '../../node_modules/bootstrap/scss/bootstrap';
 
+
+
+/* Fix for responsive layout */
+
+/* Default - Desktop with sidebar */
+main {
+  margin-left: 250px; /* Or whatever your sidebar width is */
+  padding: 2rem;
+}
+
+body {
+  display: flex;
+}
+
+aside {
+  width: 250px; /* Sidebar width */
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+/* Mobile - Remove sidebar spacing */
+@media (max-width: 991px) {
+  main {
+    margin-left: 0 !important;
+    padding: 1rem;
+    width: 100%;
+  }
+
+  body {
+    flex-direction: column;
+  }
+
+  aside {
+    display: none !important;
+  }
+
+  .navbar {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Small adjustments for very small screens */
+@media (max-width: 576px) {
+  main {
+    padding: 1rem 0.5rem;
+  }
+
+  .page-header {
+    padding: 1rem 0.5rem;
+  }
+
+  .card {
+    margin: 0.5rem 0;
+  }
+}

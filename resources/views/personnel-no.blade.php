@@ -7,13 +7,7 @@
     <title>Personnel Verification</title>
     
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            display: flex; /* This aligns sidebar and main content side-by-side */
-            font-family: 'DM', sans-serif;
-            background-color: #f8f9fa;
-        }
+
 
         /* The container for everything that ISN'T the sidebar */
         .main-content {
@@ -32,6 +26,10 @@
             width: 350px;
             text-align: center;
             border-top: 5px solid #ee3124;
+            background: rgba(255, 255, 255, 0.6); /* Semi-transparent white */
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(12px);
+    
         }
 
         .form-card h3 {
